@@ -18,11 +18,13 @@
     <form action="" id="add-list" onsubmit="app.listController.addList(event)">
       <div class="form-group">
         <label for="listNameInput">List Name</label>
-        <input type="text" class="form-control" id="listName" name="listName" placeholder="Create a new list here...">
+        <input type="text" class="form-control" id="listName" name="listName" placeholder="Create a new list here..."
+          required="true">
       </div>
       <button class="btn btn-success" id="submit-list" type="submit">Create
         List</button>
     </form>
+
 
     <div class="lists row" id="lists-view">
       <!-- lists go here -->

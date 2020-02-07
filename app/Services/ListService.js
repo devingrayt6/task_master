@@ -1,6 +1,9 @@
 import List from "../Models/List.js";
 import _store from "../store.js";
 
+
+let _listState = _store.State.lists;
+
 //Public
 class ListService {
   //TODO  Here is where we handle all of our business logic,
@@ -12,6 +15,17 @@ class ListService {
     newList = new List(newList);
     _store.State.lists.push(newList);
     console.log('Service recieving List...')
+    _store.saveState();
+  }
+
+  removeList(id) {
+    _store.State.lists = _store.State.lists.filter(list => list.id != id);
+    _store.saveState();
+  }
+
+  addListItem(event, id) {
+    let listNum = _listState.find(list => list.id == id);
+    listNum.items.push(event.target.listItemName.value);
     _store.saveState();
   }
 

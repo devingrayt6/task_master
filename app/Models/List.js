@@ -15,7 +15,16 @@ export default class List {
     <div class="col-12 col-md-4 m-1">
     <div class="card" style="width: 18rem;">
       <div class="card-body">
-        <h5 class="card-title">${this.name}</h5>
+      <button class="btn btn-danger" onclick="app.listController.removeList('${this.id}')">X</button>
+      <h5 class="card-title">${this.name}</h5>
+      <form action="" id="add-item" onsubmit="app.listController.addListItem(event, '${this.id}')">
+      <button class="btn btn-info" type="submit">+</button>
+        <div class="form-group">
+          <label for="listItemName">Item Name</label>
+          <input type="text" class="form-control" id="listItemName" name="listItemName"
+            placeholder="Create a new Item here..." required="true">
+        </div>
+      </form>
         <div>${this.items}</div>
       </div>
     </div>
