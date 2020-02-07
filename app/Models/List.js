@@ -11,16 +11,15 @@ export default class List {
   //Be sure to add the methods needed to create the view template for this model
   //For starting out, your tasks may be strings alone, but later you may wish to turn them into full objects, that will be up to you
   get Template() {
-    return
-    `
-    <div class="col-12 col-md-4">
+    return `
+    <div class="col-12 col-md-4 m-1">
     <div class="card" style="width: 18rem;">
       <div class="card-body">
-        <h5 class="card-title">'${this.name}'</h5>
-        <div>'${this.items}'</div>
+        <h5 class="card-title">${this.name}</h5>
+        <div>${this.items}</div>
       </div>
     </div>
   </div>
-    `;
+    `
   }
 }

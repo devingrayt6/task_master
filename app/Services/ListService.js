@@ -12,6 +12,7 @@ class ListService {
     newList = new List(newList);
     _store.State.lists.push(newList);
     console.log('Service recieving List...')
+    _store.saveState();
   }
 
 }
