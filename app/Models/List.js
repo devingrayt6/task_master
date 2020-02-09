@@ -15,20 +15,22 @@ export default class List {
 
     this.items.forEach(item => {
       template += `
-        <span>${item}</span><i class="fas fa-trash-alt" onclick="app.listController.removeListItem('${item}', '${this.id}')"></i>
+        <div class="item-container m-1 p-1">
+        <span>${item}</span><i class="fas fa-trash-alt removeIcon" onclick="app.listController.removeListItem('${item}', '${this.id}')" title="remove item from list"></i>
+        </div>
       `
     });
 
     return `
-    <div class="col-12 col-md-4 m-1">
-    <div class="card" style="width: 18rem;">
+    <div class="col-12 col-md-3 my-2">
+    <div class="card" style="width: 15rem;">
       <div class="card-body">
-      <button class="btn btn-danger" onclick="app.listController.removeList('${this.id}')">X</button>
-      <h5 class="card-title">${this.name}</h5>
       <form action="" id="add-item" onsubmit="app.listController.addListItem(event, '${this.id}')">
-      <button class="btn btn-info" type="submit">+</button>
+      <i class="fas fa-minus-square removeIcon" onclick="app.listController.removeList('${this.id}')"></i>
+      <div class="listBtns m-1">
+      <h5 class="card-title">${this.name}</h5>
+      <button class="btn btn-light" type="submit" title="Add items to your list"><i class="fas fa-plus add-item-btn"></i></button></div>
         <div class="form-group">
-          <label for="listItemName">Item Name</label>
           <input type="text" class="form-control" id="listItemName" name="listItemName"
             placeholder="Create a new Item here..." required="true">
         </div>

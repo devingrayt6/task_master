@@ -1,3 +1,25 @@
-.fa-trash-alt{
+.removeIcon{
     color: red;
+    font-size: large;
+}
+.removeIcon:hover{
+    cursor: pointer;
+}
+.fa-trash-alt{
+    font-size: small;
+}
+
+.listBtns{
+    display: flex;
+    justify-content: space-between;
+}
+.add-item-btn{
+    color: blue;
+}
+.item-container{
+   display: flex;
+   justify-content: space-evenly;
+   -webkit-box-shadow: 7px 7px 5px 0px rgba(230,223,230,1);
+-moz-box-shadow: 7px 7px 5px 0px rgba(230,223,230,1);
+box-shadow: 7px 7px 5px 0px rgba(230,223,230,1);
 }
