@@ -11,6 +11,14 @@ export default class List {
   //Be sure to add the methods needed to create the view template for this model
   //For starting out, your tasks may be strings alone, but later you may wish to turn them into full objects, that will be up to you
   get Template() {
+    let template = '';
+
+    this.items.forEach(item => {
+      template += `
+        <span>${item}</span><i class="fas fa-trash-alt" onclick="app.listController.removeListItem('${item}', '${this.id}')"></i>
+      `
+    });
+
     return `
     <div class="col-12 col-md-4 m-1">
     <div class="card" style="width: 18rem;">
@@ -25,7 +33,7 @@ export default class List {
             placeholder="Create a new Item here..." required="true">
         </div>
       </form>
-        <div>${this.items}</div>
+        <div>${template}</div>
       </div>
     </div>
   </div>

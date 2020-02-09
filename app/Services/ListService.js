@@ -24,8 +24,15 @@ class ListService {
   }
 
   addListItem(event, id) {
-    let listNum = _listState.find(list => list.id == id);
-    listNum.items.push(event.target.listItemName.value);
+    let listNum = _listState.findIndex(l => l.id == id);
+    
+    _store.State.lists[listNum].items.push(event.target.listItemName.value);
+    _store.saveState();
+  }
+
+  removeListItem(item, id){
+    let list = _store.State.lists.find(l => l.id == id);
+    list.items = list.items.filter(i => i != item.toString());
     _store.saveState();
   }
 

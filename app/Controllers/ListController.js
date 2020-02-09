@@ -14,6 +14,7 @@ function _drawLists() {
   listView.innerHTML = template;
 }
 
+
 //Public
 export default class ListController {
   constructor() {
@@ -40,15 +41,19 @@ export default class ListController {
   }
 
   removeList(id) {
-    _listService.removeList(id);
-    _drawLists();
+      _listService.removeList(id);
+      _drawLists();
   }
 
   addListItem(event, id) {
     event.preventDefault();
-
-    _listService.addListItem(id);
+    _listService.addListItem(event, id);
     _drawLists();
+  }
+
+  removeListItem(item, id) {
+      _listService.removeListItem(item, id);
+      _drawLists();
   }
 
   //TODO: Your app will need the ability to create, and delete both lists and listItems
