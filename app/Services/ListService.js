@@ -2,7 +2,7 @@ import List from "../Models/List.js";
 import _store from "../store.js";
 
 
-let _listState = _store.State.lists;
+
 
 //Public
 class ListService {
@@ -24,8 +24,8 @@ class ListService {
   }
 
   addListItem(event, id) {
-    let listNum = _listState.findIndex(l => l.id == id);
-    
+    let listNum = _store.State.lists.findIndex(l => l.id == id);
+    console.log(listNum)
     _store.State.lists[listNum].items.push(event.target.listItemName.value);
     _store.saveState();
   }

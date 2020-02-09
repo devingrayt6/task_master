@@ -41,8 +41,7 @@ export default class ListController {
   }
 
   removeList(id) {
-      _listService.removeList(id);
-      _drawLists();
+    this.confirmDelete('list', '', id)
   }
 
   addListItem(event, id) {
@@ -52,8 +51,58 @@ export default class ListController {
   }
 
   removeListItem(item, id) {
-      _listService.removeListItem(item, id);
-      _drawLists();
+    this.confirmDelete('listItem', item, id);
+      // _listService.removeListItem(item, id);
+      // _drawLists();
+  }
+
+
+
+
+  confirmDelete(type, item, id){
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger'
+      },
+      buttonsStyling: false
+    })
+    
+    swalWithBootstrapButtons.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, cancel!',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.value) {
+        swalWithBootstrapButtons.fire(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success'
+        )
+        if(type == 'list'){
+          _listService.removeList(id);
+          _drawLists();
+        }
+        if(type == 'listItem'){
+          _listService.removeListItem(item, id);
+          _drawLists();
+        }
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        swalWithBootstrapButtons.fire(
+          'Cancelled',
+          'Your imaginary file is safe :)',
+          'error'
+        )
+      }
+      console.log(result.value)
+    })
   }
 
   //TODO: Your app will need the ability to create, and delete both lists and listItems
